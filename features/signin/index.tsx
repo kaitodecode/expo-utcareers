@@ -68,7 +68,7 @@ export default function SignInScreen() {
         if (response.data.data.role === 'admin') {
           router.replace("/admin/approve");
         } else {
-          router.replace("/user/job_list");
+          router.replace("/user/job");
         }
 
       } else {

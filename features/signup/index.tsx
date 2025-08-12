@@ -1,6 +1,6 @@
 import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { Alert, Image, ImageBackground, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, ImageBackground, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import * as z from "zod";
 import { api } from "@/lib/axios";
