@@ -4,7 +4,6 @@ import { Alert, Image, ImageBackground, Text, TextInput, TouchableOpacity, View 
 import { useState } from "react";
 import * as z from "zod";
 import { api } from "@/lib/axios";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useAuth } from "@/stores/auth";
 
 const signinSchema = z.object({
@@ -19,7 +18,7 @@ export default function SignInScreen() {
   const [errors, setErrors] = useState<{ identifier?: string; password?: string }>({});
   const [isLoading, setIsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
-  const { setToken, setUser } = useAuth();
+  const { login } = useAuth();
 
   const handleSignIn = async () => {
     try {
@@ -55,20 +54,16 @@ export default function SignInScreen() {
       console.log(response.data);
 
       if (response.data.success) {
-        // Store token
-        AsyncStorage.setItem("token", response.data.data.token);
-        AsyncStorage.setItem("user", JSON.stringify(response.data.data));
-        AsyncStorage.setItem("role", response.data.data.role);
-
-        setToken(response.data.data.token);
-        setUser(response.data.data);
+        // Use login function from auth store
+        await login(response.data.data.token, response.data.data);
 
         Alert.alert("Success", "Sign in successful");
         // Navigate to home
+        console.log(response.data.data.role === 'admin')
         if (response.data.data.role === 'admin') {
-          router.replace("/admin/approve");
+          router.navigate("/admin/approve");
         } else {
-          router.replace("/user/job");
+          router.navigate("/user/job");
         }
 
       } else {

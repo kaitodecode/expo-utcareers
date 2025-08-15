@@ -312,10 +312,10 @@ export default function JobRoute() {
 
                                         {/* Action Footer */}
                                         <View className="bg-gray-50 px-5 py-4 border-t border-gray-100">
-                                            <View className="flex-row items-center justify-between">
-                                                <TouchableOpacity className="bg-white border border-gray-200 px-4 py-2 rounded-xl active:scale-95">
+                                            <View className="flex-row items-center justify-end">
+                                                {/* <TouchableOpacity className="bg-white border border-gray-200 px-4 py-2 rounded-xl active:scale-95">
                                                     <Text className="text-gray-700 text-sm font-bold">View Details</Text>
-                                                </TouchableOpacity>
+                                                </TouchableOpacity> */}
                                                 <TouchableOpacity 
                                                     className="bg-yellow-400 px-6 py-2 rounded-xl border-2 border-yellow-500 active:scale-95"
                                                     onPress={() => {

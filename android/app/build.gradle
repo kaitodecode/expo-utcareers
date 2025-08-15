@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.fikri23.expoutcareers'
+    namespace 'com.kaitodecode.utcareers'
     defaultConfig {
-        applicationId 'com.fikri23.expoutcareers'
+        applicationId 'com.kaitodecode.utcareers'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

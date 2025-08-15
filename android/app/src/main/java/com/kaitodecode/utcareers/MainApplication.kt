@@ -1,4 +1,4 @@
-package com.fikri23.expoutcareers
+package com.kaitodecode.utcareers
 
 import android.app.Application
 import android.content.res.Configuration

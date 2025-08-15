@@ -8,9 +8,9 @@ export default function SignInROute() {
   useEffect(() => {
     if (isAuthenticated) {
       if (user.role === 'admin') {
-        router.replace('/admin/approve')
+        router.navigate('/admin/approve')
       } else if (user.role === 'pelamar') {
-        router.replace('/user/job')
+        router.navigate('/user/job')
       }
     }
   }, [])

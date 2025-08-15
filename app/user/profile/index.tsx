@@ -17,7 +17,6 @@ interface Profile {
     role: string;
     applicants: number;
 }
-
 interface UpdateProfile {
     photo: string | null;
     name: string | null;
@@ -25,7 +24,7 @@ interface UpdateProfile {
     description: string | null;
 }
 
-export default function ProfileRoute() {
+export default function Profile() {
     const { logout } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [profile, setProfile] = useState<Profile | null>(null);
@@ -38,6 +37,8 @@ export default function ProfileRoute() {
 
     const [refreshing, setRefreshing] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
+
+
 
     const getProfileData = async () => {
         try {
@@ -54,6 +55,8 @@ export default function ProfileRoute() {
                 role: res.data.data.role,
                 applicants: res.data.data._count.applicants,
             });
+
+            console.log(res.data.data);
 
             setUpdateProfile({
                 photo: res.data.data.photo,
@@ -121,6 +124,7 @@ export default function ProfileRoute() {
                 />
             }
         >
+            {/* Header Section */}
             <View className="bg-gradient-to-br from-black via-gray-800 to-yellow-400 pt-12 pb-8 rounded-b-3xl">
                 <View className="flex-row justify-end px-4 mb-4">
                     <TouchableOpacity
@@ -131,6 +135,7 @@ export default function ProfileRoute() {
                     </TouchableOpacity>
                 </View>
                 <View className="items-center px-6">
+                    {/* Profile Image */}
                     <View className="relative mb-4">
                         <View className="bg-white p-1 rounded-full shadow-lg">
                             {profile?.photo ? (
@@ -153,11 +158,13 @@ export default function ProfileRoute() {
                         </TouchableOpacity>
                     </View>
 
+                    {/* User Info */}
                     <Text className="text-black text-2xl font-bold mb-1">{profile?.name || "Loading..."}</Text>
                     <Text className="text-black/90 mb-4 capitalize">{profile?.role || "Loading..."}</Text>
                 </View>
             </View>
 
+            {/* Stats Section */}
             <View className="bg-white mx-5 -mt-6 rounded-2xl shadow-lg p-6">
                 <View className="flex-row justify-around">
                     <View className="items-center flex-1">
@@ -167,13 +174,11 @@ export default function ProfileRoute() {
                 </View>
             </View>
 
+            {/* About Section */}
             <View className="bg-white mx-5 mt-5 rounded-2xl shadow-md p-6">
                 <View className="flex-row justify-between items-center mb-4">
                     <Text className="text-xl font-bold text-black">About Me</Text>
-                    <TouchableOpacity 
-                        onPress={() => setModalEdit(true)}
-                        className="bg-black p-2 rounded-lg"
-                    >
+                    <TouchableOpacity className="bg-black p-2 rounded-lg">
                         <MaterialCommunityIcons name="pencil-outline" size={18} color="#ffd401" />
                     </TouchableOpacity>
                 </View>
@@ -182,13 +187,11 @@ export default function ProfileRoute() {
                 </Text>
             </View>
 
+            {/* Contact Section */}
             <View className="bg-white mx-5 mt-5 rounded-2xl shadow-md p-6 mb-10">
                 <View className="flex-row justify-between items-center mb-4">
                     <Text className="text-xl font-bold text-black">Contact</Text>
-                    <TouchableOpacity 
-                        onPress={() => setModalEdit(true)}
-                        className="bg-black p-2 rounded-lg"
-                    >
+                    <TouchableOpacity className="bg-black p-2 rounded-lg">
                         <MaterialCommunityIcons name="pencil-outline" size={18} color="#ffd401" />
                     </TouchableOpacity>
                 </View>
@@ -227,6 +230,20 @@ export default function ProfileRoute() {
                 </TouchableOpacity>
             </View>
 
+            {/* Actions Section */}
+            {/* <View className="mx-5 mt-5 mb-8">
+                <View className="flex-row gap-4">
+                    <TouchableOpacity className="flex-1 bg-yellow-400 flex-row items-center justify-center py-4 rounded-xl border-2 border-black">
+                        <Ionicons name="download" size={18} color="#000" />
+                        <Text className="text-black font-bold ml-2">Download CV</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="flex-1 bg-black flex-row items-center justify-center py-4 rounded-xl">
+                        <Ionicons name="share-social" size={18} color="#ffd401" />
+                        <Text className="text-yellow-400 font-bold ml-2">Share</Text>
+                    </TouchableOpacity>
+                </View>
+            </View> */}
+
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -239,12 +256,13 @@ export default function ProfileRoute() {
                 >
                 </TouchableOpacity>
 
+
                 <View className="bg-white h-[80vh] w-full absolute bottom-0 rounded-t-2xl">
                     <View className="flex flex-row justify-between border-b-2 p-2 items-center">
-                        <Text>Edit Profile</Text>
+                        <Text>Testing</Text>
                         <TouchableOpacity
                             onPress={() => setModalEdit(false)}
-                            className="bg-white p-2 rounded-full shadow-lg z-50"
+                            className=" bg-white p-2 rounded-full shadow-lg z-50"
                         >
                             <Ionicons name="close" size={24} color="#000" />
                         </TouchableOpacity>
@@ -342,6 +360,7 @@ export default function ProfileRoute() {
                             className="bg-yellow-400 py-3 rounded-lg items-center mt-4"
                             onPress={async () => {
                                 try {
+                                    // Validate required fields
                                     if (!updateProfile.name) {
                                         Alert.alert("Error", "Name is required");
                                         return;
@@ -349,11 +368,15 @@ export default function ProfileRoute() {
 
                                     setIsLoading(true);
 
+                                    // Create form data for profile update
                                     const formData = new FormData();
+
+                                    // Add text fields
                                     formData.append('name', updateProfile.name);
                                     formData.append('address', updateProfile.address || '');
                                     formData.append('description', updateProfile.description || '');
 
+                                    // Add photo if exists
                                     if (updateProfile.photo) {
                                         formData.append('photo', {
                                             uri: updateProfile.photo,
@@ -362,6 +385,7 @@ export default function ProfileRoute() {
                                         } as any);
                                     }
 
+                                    // Make API request with proper headers
                                     const response = await api.put(
                                         "/auth/profile",
                                         formData,
@@ -373,12 +397,17 @@ export default function ProfileRoute() {
                                         }
                                     );
 
+                                    // Refresh profile data
                                     await getProfileData();
+
+                                    // Handle success
                                     Alert.alert("Success", "Profile updated successfully");
                                     setModalEdit(false);
 
                                 } catch (error: any) {
+                                    // Handle errors
                                     console.error("Profile update error:", error);
+
                                     const errorMessage = error.response?.data?.message
                                         || error.response?.data?.photo?.[0]
                                         || error.response?.data?.name?.[0]
@@ -398,8 +427,11 @@ export default function ProfileRoute() {
                             </Text>
                         </TouchableOpacity>
                     </View>
+
                 </View>
             </Modal>
+
+
         </ScrollView>
     );
-}   
+}

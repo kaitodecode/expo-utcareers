@@ -1,8 +1,30 @@
-import { Tabs } from "expo-router";
+import { router, Tabs } from "expo-router";
 import { Ionicons } from '@expo/vector-icons';
 import { Platform } from 'react-native';
+import { useAuth } from "@/stores/auth";
+import { useEffect } from "react";
 
 export default function UserLayout() {
+  const { isAuthenticated, role, logout } = useAuth();
+  
+  useEffect(()=>{
+    console.log(isAuthenticated, role)
+
+    if(!isAuthenticated){
+      router.replace('/signin')
+    }
+
+    if(role && role != 'pelamar'){
+      (async () => {
+        await logout()
+      })();
+      router.replace('/signin')
+
+    }
+
+  },[isAuthenticated, role])
+
+
   return (
     <Tabs
       screenOptions={{

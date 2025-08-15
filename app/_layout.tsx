@@ -35,7 +35,7 @@ export default function RootLayout() {
   }
 
   return (
-      <SafeAreaView className="flex-1" onLayout={onLayoutRootView}>
+    <SafeAreaView className="flex-1" onLayout={onLayoutRootView}>
         <StatusBar barStyle={"light-content"} />
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
