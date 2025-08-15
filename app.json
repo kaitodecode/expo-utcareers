@@ -29,7 +29,7 @@
         {
           "image": "./assets/images/logo.png",
           "resizeMode": "cover",
-          "backgroundColor": "transparent"
+          "backgroundColor": "#FFFFFF"
         }
       ],
       "expo-font"
@@ -37,7 +37,7 @@
     "splash":         {
           "image": "./assets/images/logo.png",
           "resizeMode": "cover",
-          "backgroundColor": "transparent"
+          "backgroundColor": "#FFFFFF"
         },
 
     "experiments": {
