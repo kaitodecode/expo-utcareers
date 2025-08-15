@@ -1,4 +1,4 @@
-package com.kaitodecode.utcareers
+package com.mawar.ujikom
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

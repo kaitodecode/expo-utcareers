@@ -15,7 +15,7 @@
         "foregroundImage": "./assets/images/logo.png"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.kaitodecode.utcareers"
+      "package": "com.mawar.ujikom"
     },
     "web": {
       "bundler": "metro",
@@ -34,14 +34,19 @@
       ],
       "expo-font"
     ],
-    "splash":         {
-          "image": "./assets/images/logo.png",
-          "resizeMode": "cover",
-          "backgroundColor": "#FFFFFF"
-        },
-
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#FFFFFF"
+    },
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "c8430367-7f3d-4630-b125-fac58992ca50"
+      }
     }
   }
 }

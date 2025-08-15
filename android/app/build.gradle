@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.kaitodecode.utcareers'
+    namespace 'com.mawar.ujikom'
     defaultConfig {
-        applicationId 'com.kaitodecode.utcareers'
+        applicationId 'com.mawar.ujikom'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

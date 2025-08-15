@@ -1,4 +1,4 @@
-package com.kaitodecode.utcareers
+package com.mawar.ujikom
 
 import android.app.Application
 import android.content.res.Configuration
