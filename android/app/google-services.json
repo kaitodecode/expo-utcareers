@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "302215216984",
+    "project_id": "ujikom-36862",
+    "storage_bucket": "ujikom-36862.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302215216984:android:6b1964a384610ba9366f2d",
+        "android_client_info": {
+          "package_name": "com.mawar.ujikom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLqtgQJJsejo9Ck00Z7yg8tRmgted__Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

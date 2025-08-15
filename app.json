@@ -15,7 +15,8 @@
         "foregroundImage": "./assets/images/logo.png"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.mawar.ujikom"
+      "package": "com.mawar.ujikom",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -32,7 +33,9 @@
           "backgroundColor": "#FFFFFF"
         }
       ],
-      "expo-font"
+      "expo-font",
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging"
     ],
     "splash": {
       "image": "./assets/images/logo.png",
